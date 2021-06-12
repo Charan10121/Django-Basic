@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{%load static%}
+{% block title %}Image page2{% endblock %}
+{%block content%}
+<div class="container-fluid">
+    <div class="row" style="background : darkred;">
+        <!--total width of bootstrap page is 12, so i can have 4 images of 3 width, etc -->
+        <!--see bootstrap grid options for more info-->
+        <!--md indicates medium-->
+        <!--if for every device, you want the same layout (taking only that one row of space), remove the md,etc. and use directly col-6,etc. -->
+        <div class="col-md-6">
+            <img src="{% static 'weeknd.jpg' %}" class="img-fluid" alt="Responsive image">  <!--column of width 6-->
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'weeknd.jpg' %}" class="img-fluid" alt="Responsive image">
+        </div>
+    </div>
+</div>
+{%endblock%}

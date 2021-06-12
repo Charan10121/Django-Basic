@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block title %}Form Page2{% endblock %}
+{%block content%}
+<div class="col-md-6" style="margin : 0 auto;">
+    {% if success %}
+    <div class="alert alert-success alert-dismissible fade show" style="margin-top : 1rem;" role="alert">
+        <!--alert-success makes it green-->
+        <strong>{{successmsg}}</strong>
+        <!--strong indicates bold-->
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endif%}
+
+    {% if error %}
+    {% for error in errors %}
+    <div class="alert alert-danger alert-dismissible fade show" style="margin-top : 1rem;" role="alert">
+        <!--alert-success makes it green-->
+        <strong>{{error}}</strong>
+        <!--strong indicates bold-->
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endfor%}
+    {%endif%}
+
+    <form method="POST">
+        <p class="text-muted">Note: Title must be capital</p>
+        {% csrf_token %}
+        <!-- csrf token req for post-->
+        {{formkey.as_p}}
+        <!--as_p indicates paragraph tag to be used, as_table uses table tag, as_ul for unorder list-->
+        <button type="submit" style="margin: 1rem auto 0 auto; display: block;" class="btn btn-primary">Submit</button>
+        <!-- 1rem auto 0 auto indicates 1rem top,auto right and left and 0 bottom-->
+        <!-- or we can use margin: auto; display: block; margin-top: 1rem;-->
+    </form>
+</div>
+{%endblock%}
